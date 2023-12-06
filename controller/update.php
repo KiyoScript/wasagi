@@ -38,6 +38,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
         }
 
         // Update user profile
+        $image = preg_replace('/\.\.\//', '',$image);
         if (updateUser($id, $email, $firstName, $middleName, $lastName, $birthdate, $age, $gender, $address, $image, $conn)) {
             $_SESSION['success_message'] = 'Profile updated successfully';
             header('Location: ../profile.php?id=' . $id);

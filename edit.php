@@ -23,7 +23,7 @@
               <img src="<?php echo $image ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"><br>
               <label class="form-label">Profile Picture</label>
               <input type="file" class="form-control" name="image">
-              <input type="file" hidden="hidden" name="old_image" value="<?=$user['image']?>" >
+              <input type="text" hidden="hidden" name="old_image" value="<?=$user['image']?>" >
               <h5 class="my-3"><?php echo $user['firstname']." ".$user['lastname'] ?></h5>
               <p class="text-muted mb-1"><?php echo $user['age']?></p>
               <p class="text-muted mb-4"><?php echo $user['address']?></p>
