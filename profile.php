@@ -6,7 +6,7 @@
 		include_once 'controller/user.php';
 
 		$user = getUserById($_GET['id'], $conn);
-		$image = $user['image'] ? "upload/{$user['image']}" : "assets/images/{$user['gender']}.svg";
+		$image = $user['image'] ? "{$user['image']}" : "assets/images/{$user['gender']}.svg";
 
 ?>
 <?php include_once 'views/heading.php';?>
