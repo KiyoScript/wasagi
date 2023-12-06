@@ -43,7 +43,7 @@
 											</div>
 											<div class="form-group mt-2">
 												<label class="form-label">Last name</label>
-												<input type="text" class="form-control" name="middlename" value="<?php echo (isset($_GET['lastname']))?$_GET['lastname']:"" ?>">
+												<input type="text" class="form-control" name="lastname" value="<?php echo (isset($_GET['lastname']))?$_GET['lastname']:"" ?>">
 											</div>
 											<div class="form-group mt-2">
 												<label class="form-label">Birthdate</label>
@@ -52,6 +52,17 @@
 											<div class="form-group mt-2">
 												<label class="form-label">Age</label>
 												<input type="number" class="form-control" name="age" value="<?php echo (isset($_GET['age']))?$_GET['age']:"" ?>">
+											</div>
+											<div class="form-group mt-2">
+												<label class="form-label">Gender</label>
+												<select class="form-control" name="gender">
+													<?php
+														$genderOptions = ['male', 'female'];
+														foreach ($genderOptions as $option) {
+															echo "<option value='$option'>$option</option>";
+														}
+													?>
+												</select>
 											</div>
 											<div class="form-group mt-2">
 												<label class="form-label">Address</label>
