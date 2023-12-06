@@ -20,13 +20,14 @@
 						<div class="card mb-4">
 							<div class="card-body text-center">
 								<img src="<?php echo $image ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+								<label class="form-label">Profile Picture</label>
 								<h5 class="my-3"><?php echo $user['firstname']." ".$user['lastname'] ?></h5>
 								<p class="text-muted mb-1"><?php echo $user['age']?></p>
 								<p class="text-muted mb-4"><?php echo $user['address']?></p>
 								<div class="d-flex justify-content-center mb-2">
 									<?php
 										if ($_SESSION['id'] === $user['id']) {
-											echo '<button type="button" class="btn btn-outline-primary">Update</button>';
+											echo '<a href="edit.php?id=' . $user['id'] . '" class="btn btn-outline-primary">Edit</a>';
 											echo '<button type="button" class="btn btn-primary ms-1">Delete</button>';
 										}
 										?>

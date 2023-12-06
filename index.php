@@ -4,11 +4,9 @@
     include_once 'connection.php';
     include_once 'controller/user.php';
 
-    $user = getUserById($_SESSION['id'], $conn);
-    $image = $user['image'] ? "upload/{$user['image']}" : "assets/images/{$user['gender']}.svg";
-
+    $image = $user['image'] ? "{$user['image']}" : "assets/images/{$user['gender']}.svg";
     $users = getAllUsers($conn, $_SESSION['id']);
-		
+
 ?>
 <?php include_once 'views/heading.php'; ?>
 <body>

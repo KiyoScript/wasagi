@@ -23,3 +23,19 @@
     $users = $stmt->fetchAll();
     return $users;
   }
+  function updateUser($id, $email, $firstname, $middlename, $lastname, $birthdate, $age, $gender, $address, $image, $db) {
+    try {
+        $sql = "UPDATE users
+                SET email = ?, firstname = ?, middlename = ?, lastname = ?,
+                    birthdate = ?, age = ?, gender = ?, address = ?, image = ?
+                WHERE id = ?";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$email, $firstname, $middlename, $lastname, $birthdate, $age, $gender, $address, $image, $id]);
+
+        return true;
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+
