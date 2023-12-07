@@ -1,19 +1,7 @@
 <?php
-class User {
-    public $id;
-    public $email;
-    public $firstName;
-    public $middleName;
-    public $lastName;
-    public $birthDate;
-    public $age;
-    public $gender;
-    public $address;
-    public $image;
-    public $password;
-}
-
-function getUserById($id, $conn) {
+  session_start();
+  include_once "connection.php";
+  function getUserById($id, $conn) {
     $query = "SELECT * FROM users WHERE id = :id";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':id', $id);
@@ -29,29 +17,19 @@ function getAllUsers($db, $currentUserId) {
 
     return $stmt->fetchAll();
 }
-
-function updateUser(User $user, $db) {
+  function updateUser($id, $email, $firstname, $middlename, $lastname, $birthdate, $age, $gender, $address, $image, $db) {
     try {
         $sql = "UPDATE users
                 SET email = ?, firstname = ?, middlename = ?, lastname = ?,
                     birthdate = ?, age = ?, gender = ?, address = ?, image = ?
                 WHERE id = ?";
         $stmt = $db->prepare($sql);
-        $stmt->execute([
-            $user->email,
-            $user->firstName,
-            $user->middleName,
-            $user->lastName,
-            $user->birthDate,
-            $user->age,
-            $user->gender,
-            $user->address,
-            $user->image,
-            $user->id
-        ]);
+        $stmt->execute([$email, $firstname, $middlename, $lastname, $birthdate, $age, $gender, $address, $image, $id]);
 
         return true;
     } catch (PDOException $e) {
         return false;
     }
 }
+
+
