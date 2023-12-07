@@ -30,6 +30,17 @@ function getAllUsers($db, $currentUserId) {
     } catch (PDOException $e) {
         return false;
     }
+
 }
 
+function deleteUser($id, $db) {
+    try {
+        $sql = "DELETE FROM users WHERE id = ?";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$id]);
 
+        return true;
+    } catch (PDOException $e) {
+        return false;
+    }
+}

@@ -26,8 +26,20 @@
 								<div class="d-flex justify-content-center mb-2">
 									<?php
 										if ($_SESSION['id'] == $user['id']) {
+											if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
+												if ($_SESSION['id'] == $user['id']) {
+														if (deleteUser($user['id'], $conn)) {
+																header("Location: login.php?success=User deleted successfully");
+																exit();
+														} else {
+																echo "Failed to delete user.";
+														}
+												}
+										}
 											echo '<a href="edit.php?id=' . $user['id'] . '" class="btn btn-outline-primary">Edit</a>';
-											echo '<button type="button" class="btn btn-primary ms-1">Delete</button>';
+											echo '<form method="post" class="ms-1">';
+											echo '<button type="submit" name="delete" class="btn btn-primary">Delete</button>';
+											echo '</form>';
 										}
 										?>
 								</div>
