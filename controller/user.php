@@ -1,41 +1,57 @@
 <?php
-  session_start();
-  include_once "connection.php";
-  function getUserById($id, $db){
-    $sql = "SELECT * FROM users WHERE id = ?";
-    $stmt = $db->prepare($sql);
-    $stmt->execute([$id]);
+class User {
+    public $id;
+    public $email;
+    public $firstName;
+    public $middleName;
+    public $lastName;
+    public $birthDate;
+    public $age;
+    public $gender;
+    public $address;
+    public $image;
+    public $password;
+}
 
-      if($stmt->rowCount() == 1){
-          $user = $stmt->fetch();
-          return $user;
-      }else {
-          return 0;
-      }
-  }
+function getUserById($id, $conn) {
+    $query = "SELECT * FROM users WHERE id = :id";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 
-  function getAllUsers($db, $current_user_id){
+function getAllUsers($db, $currentUserId) {
     $sql = "SELECT * FROM users WHERE id != :current_user_id";
     $stmt = $db->prepare($sql);
-    $stmt->bindParam(':current_user_id', $current_user_id);
+    $stmt->bindParam(':current_user_id', $currentUserId);
     $stmt->execute();
 
-    $users = $stmt->fetchAll();
-    return $users;
-  }
-  function updateUser($id, $email, $firstname, $middlename, $lastname, $birthdate, $age, $gender, $address, $image, $db) {
+    return $stmt->fetchAll();
+}
+
+function updateUser(User $user, $db) {
     try {
         $sql = "UPDATE users
                 SET email = ?, firstname = ?, middlename = ?, lastname = ?,
                     birthdate = ?, age = ?, gender = ?, address = ?, image = ?
                 WHERE id = ?";
         $stmt = $db->prepare($sql);
-        $stmt->execute([$email, $firstname, $middlename, $lastname, $birthdate, $age, $gender, $address, $image, $id]);
+        $stmt->execute([
+            $user->email,
+            $user->firstName,
+            $user->middleName,
+            $user->lastName,
+            $user->birthDate,
+            $user->age,
+            $user->gender,
+            $user->address,
+            $user->image,
+            $user->id
+        ]);
 
         return true;
     } catch (PDOException $e) {
         return false;
     }
 }
-
-

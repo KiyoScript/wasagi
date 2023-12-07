@@ -10,13 +10,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 
         $id = $_SESSION['id'];
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-        $firstName = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
-        $middleName = filter_var($_POST['middlename'], FILTER_SANITIZE_STRING);
-        $lastName = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
-        $birthdate = $_POST['birthdate']; // You might want to add validation
+        $firstName = filter_var($_POST['firstname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $middleName = filter_var($_POST['middlename'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $lastName = filter_var($_POST['lastname'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $birthdate = $_POST['birthdate'];
         $age = filter_var($_POST['age'], FILTER_VALIDATE_INT);
         $gender = $_POST['gender'];
-        $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
+        $address = filter_var($_POST['address'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $image = $_FILES['image']['name'];
         $oldImage = $_POST['old_image'];
 
