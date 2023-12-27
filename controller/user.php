@@ -1,5 +1,4 @@
 <?php
-  session_start();
   include_once "connection.php";
   function getUserById($id, $conn) {
     $query = "SELECT * FROM users WHERE id = :id";

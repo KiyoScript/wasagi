@@ -1,4 +1,15 @@
-<?php include_once 'views/heading.php'; ?>
+<?php
+session_start();
+
+if (isset($_SESSION['id'])) { 
+    header('Location: index.php');
+    exit();
+}
+
+?>
+<?php 
+include_once 'views/heading.php'; 
+	?>
 <body>
 	<div class="container d-flex justify-content-center align-items-center vh-100">
 		<div class="row justify-content-center align-items-center">
@@ -14,11 +25,11 @@
 							<?php include_once 'views/flash_message.php' ?>
 							<div class="form-group mt-2">
 								<label class="form-label">Email</label>
-								<input type="email" class="form-control" name="email" value="<?php echo (isset($_GET['email']))?$_GET['email']:"" ?>">
+								<input id="email" class="form-control" name="email" value="<?php echo (isset($_GET['email']))?$_GET['email']:"" ?>" autofocus autocomplete="on">
 							</div>
 							<div class="form-group mt-2">
 								<label class="form-label">Password</label>
-								<input type="password" class="form-control" name="password">
+								<input id="password" type="password" class="form-control" name="password" autocomplete="current-password">
 							</div>
 							<hr>
 							<div class="form-group mt-4">

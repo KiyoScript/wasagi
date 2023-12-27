@@ -1,18 +1,19 @@
 <?php
-  session_start();
-  if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
-    include_once 'connection.php';
-    include_once 'controller/user.php';
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
+	include_once 'connection.php';
+	include_once 'controller/user.php';
 ?>
-<?php include_once 'views/heading.php'; ?>
-<body>
-  <?php include_once 'views/navbar.php';?>
+	<?php include_once 'views/heading.php'; ?>
+
+	<body>
+		<?php include_once 'views/navbar.php'; ?>
 		<div class="container p-4">
 			<div class="row">
 				<?php $users = getAllUsers($conn, $_SESSION['id']); ?>
-				<?php foreach ($users as $user): ?>
+				<?php foreach ($users as $user) : ?>
 					<?php
-						$image = $user['image'] ? "{$user['image']}" : "assets/images/{$user['gender']}.svg";
+					$image = $user['image'] ? "{$user['image']}" : "assets/images/{$user['gender']}.svg";
 					?>
 					<div class="card mb-4">
 						<div class="card-body text-center d-flex flex-row align-items-center gap-4 justify-content-center">
@@ -28,12 +29,13 @@
 				<?php endforeach; ?>
 			</div>
 		</div>
-  <?php include_once 'views/footer.php'; ?>
-</body>
-</html>
+		<?php include_once 'views/footer.php'; ?>
+	</body>
+
+	</html>
 
 <?php
 } else {
-  header('Location: login.php');
-  exit();
+	header('Location: login.php');
+	exit();
 }

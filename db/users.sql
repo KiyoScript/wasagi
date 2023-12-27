@@ -36,7 +36,7 @@ CREATE TABLE `users` (
   `image` varchar(1024) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `gender` varchar(6) NOT NULL,
-  `birthdate` datetime NOT NULL,
+  `birthdate` date NOT NULL, --giilisdan nakog 'date' only boss aron mugawas ang birthdate sa edit profile
   `age` int(11) NOT NULL,
   `address` varchar(255) NOT NULL,
   `mobile_number` varchar(20) NOT NULL
