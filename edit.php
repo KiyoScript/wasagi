@@ -116,6 +116,7 @@
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Update</button>
+              <a href="index.php" class="btn btn-warning mt-2">Cancel</a>
 
             </div>
           </div>

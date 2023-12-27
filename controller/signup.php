@@ -1,16 +1,16 @@
 <?php
-  include_once "../connection.php";
+include_once "../connection.php";
 
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $firstname = $_POST['firstname'];
-  $middlename = $_POST['middlename'];
-  $lastname = $_POST['lastname'];
-  $birthdate = $_POST['birthdate'];
-  $gender = $_POST['gender'];
-  $age = $_POST['age'];
-  $address = $_POST['address'];
-  $mobile_number = $_POST['mobile_number'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$firstname = $_POST['firstname'];
+$middlename = $_POST['middlename'];
+$lastname = $_POST['lastname'];
+$birthdate = $_POST['birthdate'];
+$gender = $_POST['gender'];
+$age = $_POST['age'];
+$address = $_POST['address'];
+$mobile_number = $_POST['mobile_number'];
 
 if (isset($email) && isset($password) && isset($firstname) && isset($middlename) && isset($lastname) && isset($birthdate) && isset($gender) && isset($age) && isset($address) && isset($mobile_number)) {
     $user_data = "email=" . $email . "firstname=" . $firstname . "lastname=" . $lastname . "birthdate=" . $birthdate . "gender=" . $gender . "age=" . $age . "address=" . $address . "mobile_number=" . $mobile_number;
