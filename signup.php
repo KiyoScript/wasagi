@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION['id'])) { 
+    header('Location: index.php');
+    exit();
+}
+
+?>
+
 <?php include_once 'views/heading.php'; ?>
 <body>
 	<div class="container d-flex justify-content-center align-items-center vh-100">

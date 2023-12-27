@@ -1,11 +1,10 @@
 
 <?php
-  session_start();
   include_once 'controller/user.php';
 ?>
 <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
   <div class="container">
-    <a class="navbar-brand text-light" href="#">
+    <a class="navbar-brand text-light" href="index.php">
       Wasagi
     </a>
     <div class="navbar-links">
