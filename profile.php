@@ -23,24 +23,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 								<p class="text-muted mb-1"><?php echo $user['age'] ?></p>
 								<p class="text-muted mb-4"><?php echo $user['address'] ?></p>
 								<div class="d-flex justify-content-center mb-2">
+									
 									<?php
 									if ($_SESSION['id'] == $user['id']) {
-										if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-											if ($_SESSION['id'] == $user['id']) {
-												if (deleteUser($user['id'], $conn)) {
-													header("Location: login.php?success=User deleted successfully");
-													exit();
-												} else {
-													echo "Failed to delete user.";
-												}
-											}
-										}
 										echo '<a href="edit.php?id=' . $user['id'] . '" class="btn btn-primary">Edit</a>';
 										echo '<form method="post" class="ms-1">';
 										echo '<button type="submit" name="delete" class="btn btn-danger">Delete</button>';
 										echo '</form>';
 									}
+									
+									if ($_SESSION['id'] == $user['id'] && $_SERVER['REQUEST_METHOD'] == 'POST') {
+										if (isset($_POST['delete'])) {
+											echo '<script>
+													var confirmDelete = confirm("Are you sure you want to delete you account?");
+													if (confirmDelete) {
+														window.location.href = "controller/delete.php?id=' . $user['id'] . '";
+													}
+													</script>';
+										} elseif (isset($_POST['edit'])) {
+											header("Location: edit.php?id=" . $user['id']);
+											exit();
+										}
+									}
 									?>
+
 								</div>
 							</div>
 						</div>
