@@ -21,15 +21,15 @@ include_once 'views/heading.php';
 						</div>
 					</div>
 					<div class="col-12">
-						<form class="shadow p-4" action="controller/login.php" method="post" onsubmit="return validatelogin()">
+						<form class="shadow p-4" action="controller/login.php" method="post">
 							<?php include_once 'views/flash_message.php' ?>
 							<div class="form-group mt-2">
 								<label class="form-label">Email</label>
-								<input id="email" class="form-control" name="email" value="<?php echo (isset($_GET['email']))?$_GET['email']:"" ?>" autofocus>
+								<input id="email" class="form-control" name="email" value="<?php echo (isset($_GET['email']))?$_GET['email']:"" ?>" autofocus autocomplete="on">
 							</div>
 							<div class="form-group mt-2">
 								<label class="form-label">Password</label>
-								<input id="password" type="password" class="form-control" name="password">
+								<input id="password" type="password" class="form-control" name="password" autocomplete="current-password">
 							</div>
 							<hr>
 							<div class="form-group mt-4">
@@ -50,5 +50,4 @@ include_once 'views/heading.php';
 	</div>
 	<?php include_once 'views/footer.php'?>
 </body>
-<script src="js/main.js"></script>
 </html>

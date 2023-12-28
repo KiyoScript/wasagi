@@ -39,7 +39,7 @@
                     <label class="form-label">Email</label>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="email" value="<?php echo $user['email']?>">
+                    <input type="text" class="form-control" name="email" value="<?php echo $user['email']?> " readonly="">
                   </div>
                 </div>
                 <hr>
@@ -75,7 +75,7 @@
                     <label class="form-label">Birthdate</label>
                   </div>
                   <div class="col-sm-9">
-                    <input type="date" class="form-control" name="birthdate" value="<?php echo $defaultDate ?>">
+                    <input type="date" class="form-control" name="birthdate" value="<?php echo $user['birthdate'] ?>">
                   </div>
                 </div>
                 <hr>
